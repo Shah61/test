@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team</title>
+    <link rel="stylesheet" href="website.css">
+    <script src="https://kit.fontawesome.com/6bd6c771de.js" crossorigin="anonymous"></script>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <div class="page1" id="first">
+        <video autoplay loop muted playsinline class="back-video">
+            <source src="images/video2.mp4" type="video/mp4">
+        </video>
+
+        <nav>
+            <p>KNAPSACK4U</p>
+            <img src="images/img3-removebg-preview.png" class="logo">
+            <ul>
+                <a href="#" id="team-link2" style="--clr:#6eff3e"><span>THIS IS US</span><i></i></a>
+            </ul>
+        </nav>
+        <div class="content">
+            <h1>PROJECT NAME</h1>
+            <p>A one-line description of the project</p>
+        </div>
+    </div>
+
+
+    <section id="team" class="page">
+        <div class="team-heading">
+            <h3>Our Team</h3>
+            <ul>
+
+                <a href="#" id="team-link" style="--clr:#ff1867"><span>Our Team</span><i></i></a>
+            </ul>
+
+        </div>
+        <!-- Slider -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="team-box">
+                        <div class="imgBx">
+                            <img src="images/img1.jpg">
+                        </div>
+                        <div class="imgtext">
+                            <strong>Mukhtar Shah</strong>
+                            <span>Web Developer</span>
+                            <div class="social">
+                                <a href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="team-box">
+                        <div class="imgBx">
+                            <img src="images/img2.jpg">
+                        </div>
+                        <div class="imgtext">
+                            <strong>Haris Azhari</strong>
+                            <span>Web Developer</span>
+                            <div class="social">
+                                <a href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="team-box">
+                        <div class="imgBx">
+                            <img src="images/nezuko.gif">
+                        </div>
+                        <div class="imgtext">
+                            <strong>Hakim Chot</strong>
+                            <span>Web Developer</span>
+                            <div class="social">
+                                <a href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        var firstSwiper = new Swiper("#first .mySwiper", {
+            pagination: {
+                el: "#first .swiper-pagination",
+                dynamicBullets: true,
+
+            },
+
+            navigation: {
+                nextEl: "#first .swiper-button-next",
+                prevEl: "#first .swiper-button-prev",
+            },
+        });
+
+        var teamSwiper = new Swiper("#team .mySwiper", {
+            slidesPerView: "auto",
+            spaceBetween: 30,
+            freeMode: true,
+            grabCursor: true,
+            effect: "coverflow",
+            centeredSlides: true,
+            pagination: {
+                el: "#team .swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: "#team .swiper-button-next",
+                prevEl: "#team .swiper-button-prev",
+            },
+        });
+
+        const firstSection = document.getElementById('first');
+        const teamSection = document.getElementById('team');
+
+        firstSection.style.display = 'block';
+        teamSection.style.display = 'none';
+
+        const teamLink = document.getElementById('team-link');
+        teamLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (firstSection.style.display === 'none') {
+                fadeIn(firstSection);
+                fadeOut(teamSection);
+            } else {
+                fadeOut(firstSection);
+                fadeIn(teamSection);
+            }
+        });
+
+        const teamLinkInTeamSection = document.getElementById('team-link2');
+        teamLinkInTeamSection.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (teamSection.style.display === 'none') {
+                fadeIn(teamSection);
+                fadeOut(firstSection);
+            } else {
+                fadeOut(teamSection);
+                fadeIn(firstSection);
+            }
+        });
+        function fadeIn(element) {
+            element.style.overflow = 'hidden';
+            element.style.opacity = 0;
+            element.style.display = 'block';
+            const fadeInAnimation = element.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 500 });
+            fadeInAnimation.onfinish = () => {
+                element.style.opacity = 1;
+                element.style.overflow = '';
+            };
+        }
+
+        function fadeOut(element) {
+            element.style.overflow = 'hidden';
+            element.style.opacity = 1;
+            const fadeOutAnimation = element.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 500 });
+            fadeOutAnimation.onfinish = () => {
+                element.style.display = 'none';
+                element.style.opacity = 0;
+                element.style.overflow = '';
+            };
+        }
+
+    </script>
+</body>
+
+</html>
